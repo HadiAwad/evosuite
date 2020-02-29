@@ -12,25 +12,39 @@ public class ExecutionTimeSuiteFitness extends TestSuiteFitnessFunction {
     @Override
     public double getFitness(AbstractTestSuiteChromosome<? extends ExecutableChromosome> suite) {
         double sum = 0;
-        double coverage = 0;
-        if(suite.size() == 0 || suite.totalLengthOfTestCases() == 0  ||  suite.getLastExecutionResults().get(0) == null ){
+        double fitness = 0.0;
+
+        if(suite.size() == 0 || suite.totalLengthOfTestCases() == 0 ){
             List<ExecutionResult> results = runTestSuite(suite);
-            for (ExecutionResult er :  results) {
-                sum+=er.getExecutionTime();
+
+            // Penalize fitness if the test suite times out.
+            for (ExecutionResult result : results) {
+                if (result.hasTimeout() || result.hasTestException()) {
+                    fitness = Double.MAX_VALUE;
+                    break;
+                }else{
+                    sum+=result.getExecutionTime();
+                    fitness=0.0;
+                }
             }
-            coverage = 1.0;
         }else{
-            sum = Double.MAX_VALUE;
-            coverage = 0.0;
+            fitness = Double.MAX_VALUE;
         }
 
-        double average = sum / (suite.getTestChromosomes().size() * (1.0));
+        if(fitness !=  Double.MAX_VALUE ){
+            double average = sum / (suite.getTestChromosomes().size() * (1.0));
+        }
 
-        updateIndividual(this, suite,average);
-//        suite.setCoverage(this, coverage);
-//        suite.setNumOfCoveredGoals(this, (int) coverage);
+        updateIndividual(this, suite, fitness);
+        if(fitness ==  Double.MAX_VALUE){
+            suite.setNumOfCoveredGoals(this, 0);
+            suite.setCoverage(this, 0.0);
+        }else{
+            suite.setNumOfCoveredGoals(this, 1);
+            suite.setCoverage(this, 1.0);
+        }
 
-        return average;
+        return fitness;
     }
 
     @Override

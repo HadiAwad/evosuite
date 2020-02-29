@@ -17,15 +17,19 @@ public class ExecutionTimeTestFitness extends TestFitnessFunction {
 
     @Override
     public double getFitness(TestChromosome individual, ExecutionResult result) {
-
-        System.out.println("**********");
+        long time  = result.getExecutionTime();
+        System.out.println("*****time*****");
         System.out.println(individual);
-        System.out.println(result.getExecutionTime());
+        System.out.println(time);
         System.out.println(result.getExecutedStatements());
-        System.out.println("**********");
+        System.out.println("****time******");
         double fitness = 0.0;
         // Update the fitness of the test case with the new score.
-        updateIndividual(this,individual,fitness);
+
+        if(time <1){
+            fitness = 1.0;
+        }
+        updateIndividual(this, individual, time);
 
         return fitness;
     }
