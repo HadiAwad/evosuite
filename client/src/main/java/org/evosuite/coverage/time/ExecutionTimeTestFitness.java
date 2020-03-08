@@ -23,14 +23,13 @@ public class ExecutionTimeTestFitness extends TestFitnessFunction {
         System.out.println(time);
         System.out.println(result.getExecutedStatements());
         System.out.println("****time******");
+
         double fitness = 0.0;
         // Update the fitness of the test case with the new score.
-
         if(time <1){
             fitness = 1.0;
         }
         updateIndividual(this, individual, time);
-
         return fitness;
     }
 

@@ -27,6 +27,7 @@ public class LengthSuiteFitness extends TestSuiteFitnessFunction {
         if(fitness !=  Double.MAX_VALUE ){
             length = suite.totalLengthOfTestCases();
             //TODO: should we keep it 1
+            // no should be changed to number of methods
             if(suite.totalLengthOfTestCases() < 1){
                 fitness = Double.MAX_VALUE;
                 length = (int) fitness;
