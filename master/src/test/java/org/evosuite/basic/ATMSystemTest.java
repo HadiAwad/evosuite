@@ -20,7 +20,7 @@ public class ATMSystemTest  extends SystemTestBase {
 
         Properties.TARGET_CLASS = targetClass;
 
-        String[] command = new String[] { "-generateSuite", "-class", targetClass , "-criterion" , "branch:BZU_TIME"};
+            String[] command = new String[] { "-generateSuite", "-class", targetClass , "-criterion" , "branch:BZU_TIME"};
 
         Object result = evosuite.parseCommandLine(command);
         GeneticAlgorithm<?> ga = getGAFromResult(result);

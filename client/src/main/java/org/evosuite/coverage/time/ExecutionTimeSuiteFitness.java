@@ -14,7 +14,7 @@ public class ExecutionTimeSuiteFitness extends TestSuiteFitnessFunction {
         double sum = 0;
         double fitness = 0.0;
 
-        if(suite.size() == 0 || suite.totalLengthOfTestCases() == 0 ){
+        if(suite.size() > 0 &&  suite.totalLengthOfTestCases() > 0 ){
             List<ExecutionResult> results = runTestSuite(suite);
 
             // Penalize fitness if the test suite times out.
