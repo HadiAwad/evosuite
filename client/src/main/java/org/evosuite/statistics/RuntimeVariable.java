@@ -392,6 +392,9 @@ public enum RuntimeVariable {
 	/** Used in the comparison between LISP and MOSA */
 	Time2MaxCoverage,
 
+	/** Total number of statements in final test suite */
+	BZUTestExecutionTime,
+
 	/* Test suite Length*/
 	BZULengthCoverage,
 	BZULengthFitnessTimeline,

@@ -208,9 +208,9 @@ public class NSGAII<T extends Chromosome>
         {
             evolve();
             this.notifyIteration();
-            this.writeIndividuals(this.population);
-        }
 
+        }
+        this.writeIndividuals(this.population);
         notifySearchFinished();
     }
 

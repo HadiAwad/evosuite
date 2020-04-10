@@ -18,11 +18,11 @@ public class ExecutionTimeTestFitness extends TestFitnessFunction {
     @Override
     public double getFitness(TestChromosome individual, ExecutionResult result) {
         long time  = result.getExecutionTime();
-        System.out.println("*****time*****");
-        System.out.println(individual);
-        System.out.println(time);
-        System.out.println(result.getExecutedStatements());
-        System.out.println("****time******");
+//        System.out.println("*****time*****");
+//        System.out.println(individual);
+//        System.out.println(time);
+//        System.out.println(result.getExecutedStatements());
+//        System.out.println("****time******");
 
         double fitness = 0.0;
         // Update the fitness of the test case with the new score.

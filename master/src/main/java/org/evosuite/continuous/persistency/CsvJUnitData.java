@@ -51,7 +51,8 @@ public class CsvJUnitData {
 	private String targetClass;	
 	private Map<String, Double> coverageValues = new LinkedHashMap<String, Double>();
 	private Map<String, String> coverageBitString = new LinkedHashMap<String, String>();
-	private int totalNumberOfStatements;	
+	private int totalNumberOfStatements;
+	private int testExecutionTime;
 	private int numberOfTests;	
 	private int totalNumberOfFailures;
 	private int durationInSeconds;
@@ -118,6 +119,7 @@ public class CsvJUnitData {
 			}
 
 			data.totalNumberOfStatements = Integer.parseInt(getValue(rows,RuntimeVariable.Length.toString()));
+			data.testExecutionTime = Integer.parseInt(getValue(rows,RuntimeVariable.BZUTestExecutionTime.toString()));
 			data.durationInSeconds = Integer.parseInt(getValue(rows,RuntimeVariable.Total_Time.toString())) / 1000;
 			data.numberOfTests = Integer.parseInt(getValue(rows,RuntimeVariable.Size.toString()));
 

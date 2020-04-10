@@ -593,11 +593,11 @@ public class Properties {
 
 	@Parameter(key = "write_individuals", group = "Search Algorithm",
 	    description = "Write to a file all fitness values of each individual on each iteration of a GA")
-	public static boolean WRITE_INDIVIDUALS = true;
+	public static boolean WRITE_INDIVIDUALS = false;
 
 	@Parameter(key = "search_budget", group = "Search Algorithm", description = "Maximum search duration")
 	@LongValue(min = 1)
-	public static long SEARCH_BUDGET = 1000; // Hadi
+	public static long SEARCH_BUDGET = 600; // Hadi
 
 	@Parameter(key = "OUTPUT_DIR", group = "Runtime", description = "Directory in which to put generated files")
 	public static String OUTPUT_DIR = "evosuite-files";
@@ -699,7 +699,7 @@ public class Properties {
 
     @Parameter(key = "assertion_timeout", group = "Search Algorithm", description = "Seconds allowed for assertion generation at the end")
     @IntValue(min = 0)
-    public static int ASSERTION_TIMEOUT = 60;
+    public static int ASSERTION_TIMEOUT = 300; // Hadi
 
     @Parameter(key="assertion_minimization_fallback", group = "Search Algorithm", description = "Percentage of tests expected to have assertions at fallback check time")
     public static double ASSERTION_MINIMIZATION_FALLBACK = 1/2d;
@@ -709,7 +709,7 @@ public class Properties {
 
 	@Parameter(key = "junit_check_timeout", group = "Search Algorithm", description = "Seconds allowed for checking the generated JUnit files (e.g., compilation and stability)")
 	@IntValue(min = 0)
-	public static int JUNIT_CHECK_TIMEOUT = 60;
+	public static int JUNIT_CHECK_TIMEOUT = 120; // Hadi
 
 	@Parameter(key = "write_junit_timeout", group = "Search Algorithm", description = "Seconds allowed to write on disk the generated JUnit files")
 	@IntValue(min = 0)
@@ -1086,7 +1086,7 @@ public class Properties {
 	public static boolean SHUTDOWN_HOOK = true;
 
 	@Parameter(key = "show_progress", group = "Output", description = "Show progress bar on console")
-	public static boolean SHOW_PROGRESS = true;
+	public static boolean SHOW_PROGRESS = false;
 
 	@Parameter(key = "serialize_result", group = "Output", description = "Serialize result of search to main process")
 	public static boolean SERIALIZE_RESULT = false;

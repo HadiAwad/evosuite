@@ -435,6 +435,7 @@ public class JobHandler extends Thread {
 			//cmd.append("," + RuntimeVariable.NumberOfInputPoolObjects);
 			cmd.append("," + RuntimeVariable.Size);
 			cmd.append("," + RuntimeVariable.Length);
+			cmd.append("," + RuntimeVariable.BZUTestExecutionTime);
 			cmd.append("," + RuntimeVariable.Total_Time);
 			cmd.append("," + RuntimeVariable.Random_Seed);
 

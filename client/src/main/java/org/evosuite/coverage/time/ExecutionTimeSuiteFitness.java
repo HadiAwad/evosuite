@@ -24,15 +24,12 @@ public class ExecutionTimeSuiteFitness extends TestSuiteFitnessFunction {
                     break;
                 }else{
                     sum+=result.getExecutionTime();
+//                    System.out.println(" exec sum is : "+sum);
                     fitness=0.0;
                 }
             }
         }else{
             fitness = Double.MAX_VALUE;
-        }
-
-        if(fitness !=  Double.MAX_VALUE ){
-            double average = sum / (suite.getTestChromosomes().size() * (1.0));
         }
 
         updateIndividual(this, suite, fitness);
@@ -42,6 +39,7 @@ public class ExecutionTimeSuiteFitness extends TestSuiteFitnessFunction {
         }else{
             suite.setNumOfCoveredGoals(this, 1);
             suite.setCoverage(this, 1.0);
+            suite.setKineticEnergy(sum);
         }
 
         return fitness;

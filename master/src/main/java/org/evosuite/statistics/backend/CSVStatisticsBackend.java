@@ -102,7 +102,7 @@ public class CSVStatisticsBackend implements StatisticsBackend {
 	
 	@Override
 	public void writeData(Chromosome result, Map<String, OutputVariable<?>> data) {
-		// Write to evosuite-report/statistics.csv
+		// Write to evosuite-report/statistics.csvj
 		try {
 			File outputDir = getReportDir();			
 			File f = new File(outputDir.getAbsolutePath() + File.separator + "statistics.csv");

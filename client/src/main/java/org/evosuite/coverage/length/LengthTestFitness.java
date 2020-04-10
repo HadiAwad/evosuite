@@ -20,11 +20,11 @@ public class LengthTestFitness extends TestFitnessFunction {
 
     @Override
     public double getFitness(TestChromosome individual, ExecutionResult result) {
-        System.out.println("*****Length*****");
-        System.out.println(individual);
-        System.out.println(individual.size());
-        System.out.println(result.getExecutedStatements());
-        System.out.println("*****Length*****");
+//        System.out.println("*****Length*****");
+//        System.out.println(individual);
+//        System.out.println(individual.size());
+//        System.out.println(result.getExecutedStatements());
+//        System.out.println("*****Length*****");
         int length  = individual.size();
         double fitness = 0.0;
         if(length <minimum_test_case_size){
@@ -62,7 +62,6 @@ public class LengthTestFitness extends TestFitnessFunction {
      */
     @Override
     public int compareTo(TestFitnessFunction other) {
-        System.out.println("*****compareTocompareTocompareTocompareTo*****");
         if (other instanceof LengthTestFitness) {
             LengthTestFitness otherMethodFitness = (LengthTestFitness) other;
             if (className.equals(otherMethodFitness.getClassName()))

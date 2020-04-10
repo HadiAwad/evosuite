@@ -151,11 +151,33 @@ public class IBEA<T extends Chromosome> extends GeneticAlgorithm<T> {
 
             evolve();
             finished = isFinished();
-
         }
+
+        sortPopulationOnPareto();
+
+        this.writeIndividuals(this.population);
         logger.warn("IS finished print the fucking next" + finished);
         notifySearchFinished();
         return;
+    }
+
+    private void sortPopulationOnPareto(){
+        this.rankingFunction.computeRankingAssignment(this.population, new LinkedHashSet<FitnessFunction<T>>(this.getFitnessFunctions()));
+
+        List<T> front = null;
+        population.clear();
+        front = this.rankingFunction.getSubfront(0);
+        population.addAll(front);
+        int numberOfSubfronts = this.rankingFunction.getNumberOfSubfronts();
+        int idx= 1;
+        while (idx < numberOfSubfronts){
+            front = this.rankingFunction.getSubfront(idx);
+            if(front == null ){
+                break;
+            }
+            population.addAll(front);
+            idx++;
+        }
     }
 
     @Override
@@ -166,9 +188,8 @@ public class IBEA<T extends Chromosome> extends GeneticAlgorithm<T> {
         }
 
         this.rankingFunction.computeRankingAssignment(this.population, new LinkedHashSet<FitnessFunction<T>>(this.getFitnessFunctions()));
-        List<T> zeroFront = this.getRankingFunction().getSubfront(0);
         // Assume population is sorted
-        return (T) zeroFront.get(0);
+        return (T)  this.getRankingFunction().getSubfront(0).get(0);
     }
 
     private void removeWorst(List<T> archive) {

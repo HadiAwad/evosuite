@@ -38,7 +38,7 @@ public class ModificatedIBEA <T extends Chromosome> extends IBEA {
             addFromFront(union, this.fastNonDominatedSorting.getSubfront(1), 5);
         }
 
-        logger.warn("\nUnion size finished "+union.size());
+//        logger.warn("\nUnion size finished "+union.size());
        return union;
     }
 
